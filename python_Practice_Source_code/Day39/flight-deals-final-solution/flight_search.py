@@ -4,10 +4,14 @@ from flight_data import FlightData
 TEQUILA_ENDPOINT = "https://tequila-api.kiwi.com"
 TEQUILA_API_KEY = "8ZZgaLf8HwJBjLi-ydWRuFIkUvw6FHy0"
 
-
+# FlightSearch 模块：
+#   功能1： get_destination_code 查询获取城市名缩写编码
+#   功能2： check_flights
 class FlightSearch:
 
+    # 获取 目的地代码（输入 城市名称）
     def get_destination_code(self, city_name):
+        # 声明查询 endpoint
         location_endpoint = f"{TEQUILA_ENDPOINT}/locations/query"
         headers = {"apikey": TEQUILA_API_KEY}
         query = {"term": city_name, "location_types": "city"}
@@ -16,6 +20,7 @@ class FlightSearch:
         code = results[0]["code"]
         return code
 
+    #
     def check_flights(self, origin_city_code, destination_city_code, from_time, to_time):
         headers = {"apikey": TEQUILA_API_KEY}
         query = {
@@ -28,7 +33,7 @@ class FlightSearch:
             "flight_type": "round",
             "one_for_city": 1,
             "max_stopovers": 0,
-            "curr": "GBP"
+            "curr": "GBP"  # 货币代码
         }
 
         response = requests.get(
