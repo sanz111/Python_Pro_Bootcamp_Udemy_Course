@@ -33,10 +33,17 @@ for destination in sheet_data:
         from_time=tomorrow,  # 查询起始时间：明天开始
         to_time=six_month_from_today  # 查询终止时间：六个月后
     )
+
+    # 当查询不到地址的时候，flight 会获得一个 None， 此时忽视 None 值，继续执行程序
+    if  flight is None:
+        continue
+
     # 如果 航班价格 < sheet 表格中的最低价
     if flight.price < destination["lowestPrice"]:
         # 调用发送短信的方法
-        notification_manager.send_sms(
-            message=f"Low price alert! Only £{flight.price} to fly from {flight.origin_city}-{flight.origin_airport} to {flight.destination_city}-{flight.destination_airport}, from {flight.out_date} to {flight.return_date}."
-        )
+        # notification_manager.send_sms(
+        #     message=f"Low price alert! Only £{flight.price} to fly from {flight.origin_city}-{flight.origin_airport} to {flight.destination_city}-{flight.destination_airport}, from {flight.out_date} to {flight.return_date}."
+        # )
+        pass
+
 
