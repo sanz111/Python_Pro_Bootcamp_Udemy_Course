@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My_Website</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+
+    <p>5*6</p>
+    <p>{{5*6}}</p>
+    <p>Random Number: {{num}}</p>
+
+<!--    用 jinja 的方式添加链接 -->
+    <a href="{{ url_for('get_blog', num=3) }}">Go to my Blog</a>
+</body>
+<footer>
+    <p>Copyright {{year}}. Built by Dong at the Kyoto University</p>
+</footer>
+</html>
