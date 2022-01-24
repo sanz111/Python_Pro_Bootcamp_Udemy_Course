@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 import requests
 
-posts = requests.get("https://api.npoint.io/fccc675bede2c8c54fe1").json()
+posts = requests.get("https://api.npoint.io/2ac5cbe2fc986b722c9a").json()
 
 app = Flask(__name__)
 
